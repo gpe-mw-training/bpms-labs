@@ -1,0 +1,8 @@
+target/
+bin/
+lab_assets/
+.settings/
+.classpath
+.project
+*.zip
+*.log
