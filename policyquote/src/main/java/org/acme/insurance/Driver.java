@@ -118,5 +118,17 @@ public class Driver implements java.io.Serializable
       this.numberOfTickets = numberOfTickets;
       this.creditScore = creditScore;
    }
+   
+   public String toString() {
+       StringBuilder sBuilder = new StringBuilder("");
+       sBuilder.append("\n\t\tdriverName : "+driverName);
+       sBuilder.append("\n\t\tdlNumber : " +dlNumber);
+       sBuilder.append("\n\t\tage : "+age);
+       sBuilder.append("\n\t\taccidents : " +numberOfAccidents);
+       sBuilder.append("\n\t\ttickets : " +numberOfTickets);
+       sBuilder.append("\n\t\tSSN : " +ssn);
+       sBuilder.append("\n\t\tcreditScore : " +creditScore);
+       return sBuilder.toString();
+   }
 
 }

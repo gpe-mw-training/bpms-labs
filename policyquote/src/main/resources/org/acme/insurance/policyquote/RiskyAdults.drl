@@ -1,0 +1,18 @@
+//created on: Apr 13, 2015
+package org.acme.insurance.policyquote
+
+import org.acme.insurance.Driver
+import org.acme.insurance.Policy
+ 
+rule "RiskyAdults"
+ 
+    when
+        //conditions
+        driver : Driver(age > 24, numberOfAccidents >= 1 || numberOfTickets >=2)
+	policy : Policy(price == null, policyType == "AUTO")
+    then
+        //actions
+        modify(policy) {setPrice(300)};
+        System.out.println("fired rule " + kcontext.getRule().getName());
+ 
+end

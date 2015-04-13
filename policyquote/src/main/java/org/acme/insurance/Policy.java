@@ -103,5 +103,16 @@ public class Policy implements java.io.Serializable
       this.priceDiscount = priceDiscount;
       this.driver = driver;
    }
+   
+   public String toString() {
+       StringBuilder sBuilder = new StringBuilder("Policy =");
+       sBuilder.append("\n\tpolicyType : " +policyType);
+       sBuilder.append("\n\tprice : " +price);
+       sBuilder.append("\n\tpriceDiscount : " +priceDiscount);
+       sBuilder.append("\n\trequestDate : " +requestDate);
+       sBuilder.append("\n\tvehicle year : "+vehicleYear);
+       sBuilder.append("\n\tdriver : " +driver);
+       return sBuilder.toString();
+   }
 
 }
