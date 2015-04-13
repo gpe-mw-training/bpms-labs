@@ -10,16 +10,21 @@ public class Policy implements java.io.Serializable
 
    static final long serialVersionUID = 1L;
 
-   @org.kie.api.definition.type.Label(value = "Request Data")
-   private java.util.Date requestData;
+   @org.kie.api.definition.type.Label(value = "Request Date")
+   private java.util.Date requestDate;
+
    @org.kie.api.definition.type.Label(value = "Policy Type")
    private java.lang.String policyType;
+
    @org.kie.api.definition.type.Label(value = "Vehicle Year")
    private java.lang.Integer vehicleYear;
+
    @org.kie.api.definition.type.Label(value = "Price")
    private java.lang.Integer price;
+
    @org.kie.api.definition.type.Label(value = "Price Discount")
    private java.lang.Integer priceDiscount;
+
    @org.kie.api.definition.type.Label(value = "Driver")
    private org.acme.insurance.Driver driver;
 
@@ -27,14 +32,14 @@ public class Policy implements java.io.Serializable
    {
    }
 
-   public java.util.Date getRequestData()
+   public java.util.Date getRequestDate()
    {
-      return this.requestData;
+      return this.requestDate;
    }
 
-   public void setRequestData(java.util.Date requestData)
+   public void setRequestDate(java.util.Date requestDate)
    {
-      this.requestData = requestData;
+      this.requestDate = requestDate;
    }
 
    public java.lang.String getPolicyType()
@@ -87,11 +92,11 @@ public class Policy implements java.io.Serializable
       this.driver = driver;
    }
 
-   public Policy(java.util.Date requestData, java.lang.String policyType,
+   public Policy(java.util.Date requestDate, java.lang.String policyType,
          java.lang.Integer vehicleYear, java.lang.Integer price,
          java.lang.Integer priceDiscount, org.acme.insurance.Driver driver)
    {
-      this.requestData = requestData;
+      this.requestDate = requestDate;
       this.policyType = policyType;
       this.vehicleYear = vehicleYear;
       this.price = price;
