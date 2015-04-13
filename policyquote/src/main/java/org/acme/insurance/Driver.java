@@ -13,6 +13,24 @@ public class Driver implements java.io.Serializable
    @org.kie.api.definition.type.Label(value = "Driver Name")
    private java.lang.String driverName;
 
+   @org.kie.api.definition.type.Label(value = "Age")
+   private java.lang.Integer age;
+
+   @org.kie.api.definition.type.Label(value = "SSN")
+   private java.lang.String ssn;
+
+   @org.kie.api.definition.type.Label(value = "DL Number")
+   private java.lang.String dlNumber;
+
+   @org.kie.api.definition.type.Label(value = "Number of Accidents")
+   private java.lang.Integer numberOfAccidents;
+
+   @org.kie.api.definition.type.Label(value = "Number of Tickets")
+   private java.lang.Integer numberOfTickets;
+
+   @org.kie.api.definition.type.Label(value = "Credit Score")
+   private java.lang.Integer creditScore;
+
    public Driver()
    {
    }
@@ -27,9 +45,78 @@ public class Driver implements java.io.Serializable
       this.driverName = driverName;
    }
 
-   public Driver(java.lang.String driverName)
+   public java.lang.Integer getAge()
+   {
+      return this.age;
+   }
+
+   public void setAge(java.lang.Integer age)
+   {
+      this.age = age;
+   }
+
+   public java.lang.String getSsn()
+   {
+      return this.ssn;
+   }
+
+   public void setSsn(java.lang.String ssn)
+   {
+      this.ssn = ssn;
+   }
+
+   public java.lang.String getDlNumber()
+   {
+      return this.dlNumber;
+   }
+
+   public void setDlNumber(java.lang.String dlNumber)
+   {
+      this.dlNumber = dlNumber;
+   }
+
+   public java.lang.Integer getNumberOfAccidents()
+   {
+      return this.numberOfAccidents;
+   }
+
+   public void setNumberOfAccidents(java.lang.Integer numberOfAccidents)
+   {
+      this.numberOfAccidents = numberOfAccidents;
+   }
+
+   public java.lang.Integer getNumberOfTickets()
+   {
+      return this.numberOfTickets;
+   }
+
+   public void setNumberOfTickets(java.lang.Integer numberOfTickets)
+   {
+      this.numberOfTickets = numberOfTickets;
+   }
+
+   public java.lang.Integer getCreditScore()
+   {
+      return this.creditScore;
+   }
+
+   public void setCreditScore(java.lang.Integer creditScore)
+   {
+      this.creditScore = creditScore;
+   }
+
+   public Driver(java.lang.String driverName, java.lang.Integer age,
+         java.lang.String ssn, java.lang.String dlNumber,
+         java.lang.Integer numberOfAccidents, java.lang.Integer numberOfTickets,
+         java.lang.Integer creditScore)
    {
       this.driverName = driverName;
+      this.age = age;
+      this.ssn = ssn;
+      this.dlNumber = dlNumber;
+      this.numberOfAccidents = numberOfAccidents;
+      this.numberOfTickets = numberOfTickets;
+      this.creditScore = creditScore;
    }
 
 }
