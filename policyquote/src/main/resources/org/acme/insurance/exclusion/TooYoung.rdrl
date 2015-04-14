@@ -1,0 +1,9 @@
+package org.acme.insurance.exclusion;
+
+import java.lang.Number;
+
+rule "TooYoung"
+	dialect "mvel"
+	when
+	then
+end
