@@ -4,7 +4,7 @@ import java.lang.Number;
 import org.acme.insurance.Driver;
 import org.acme.insurance.Rejection;
 
-rule "TooManyAccidents"
+rule "TooOld"
 	dialect "mvel"
 	when
 		Driver( age > 100 )
