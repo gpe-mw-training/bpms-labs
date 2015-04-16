@@ -1,6 +1,8 @@
 package org.acme.insurance.policyquote;
 
 import java.lang.Number;
+import org.acme.insurance.Driver;
+import org.acme.insurance.Policy;
 
 rule "NoviceDriverSurcharge"
 	dialect "mvel"
