@@ -6,6 +6,8 @@ import org.acme.insurance.Policy;
 
 rule "NewerVehicleSurcharge"
 	dialect "mvel"
+	no-loop true
+	lock-on-active true
 	when
 		There is a Policy
 		- vehicle year is greater than 2004
