@@ -1,0 +1,50 @@
+//created on: Aug 14, 2012
+package org.acme.insurance.monitoring
+
+//list any import classes here.
+import org.acme.insurance.PolicyBinding;
+import java.util.ArrayList;
+
+//declare any global variables here
+global java.lang.StringBuilder policyAverage
+
+// add declaration to change the Fact into an Event
+declare PolicyBinding
+	@role(event)
+end
+
+// increase policy reserves if we receive more than 10 PolicyBinding
+// Events within 30 minutes with an average price greater than 710
+rule "exceedThreshold"
+
+    when
+    	blist: ArrayList(size > 10)
+    		from collect(PolicyBinding() over window:time(30m) );
+    		
+        a: Number(intValue > 710) from accumulate (
+        	PolicyBinding(p: price) from blist,
+        	average(p))
+    then
+        //actions
+        policyAverage.append("Increase Reserves.  Average Price is over 710 (" + a.intValue() + ")");
+		System.out.println("fired rule " + kcontext.getRule().getName());
+
+end
+
+rule "withinThreshold"
+    //include attributes such as "salience" here...
+    
+    when
+        //conditions
+        blist: ArrayList(size > 10)
+    		from collect(PolicyBinding() over window:time(30m) );
+    		
+        a: Number(intValue <= 710) from accumulate (
+        	PolicyBinding(p: price) from blist,
+        	average(p))
+    then
+        //actions
+        policyAverage.append("Average Price under the threashold (" + a.intValue() + ")");
+		System.out.println("fired rule " + kcontext.getRule().getName());
+
+end
