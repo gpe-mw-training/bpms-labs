@@ -1,0 +1,9 @@
+package org.acme.insurance.policyquote;
+
+import java.lang.Number;
+
+rule "NoviceDriverSurcharge"
+	dialect "mvel"
+	when
+	then
+end
