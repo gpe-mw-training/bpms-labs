@@ -96,18 +96,25 @@
       <name>pM</name>
       <isModify>false</isModify>
     </fact-data>
-    <execution-trace/>
+    <execution-trace>
+      <executionTimeResult>23</executionTimeResult>
+      <numberOfRulesFired>5</numberOfRulesFired>
+    </execution-trace>
     <expect-fact>
       <fieldValues>
         <expect-field>
           <fieldName>price</fieldName>
           <expected>120</expected>
+          <successResult>true</successResult>
+          <explanation>[p1] field [price] was [120].</explanation>
           <operator>==</operator>
           <nature>1</nature>
         </expect-field>
         <expect-field>
           <fieldName>priceDiscount</fieldName>
           <expected>50</expected>
+          <successResult>true</successResult>
+          <explanation>[p1] field [priceDiscount] was [50].</explanation>
           <operator>==</operator>
           <nature>1</nature>
         </expect-field>
@@ -120,12 +127,16 @@
         <expect-field>
           <fieldName>price</fieldName>
           <expected>120</expected>
+          <successResult>true</successResult>
+          <explanation>[p2] field [price] was [120].</explanation>
           <operator>==</operator>
           <nature>1</nature>
         </expect-field>
         <expect-field>
           <fieldName>priceDiscount</fieldName>
           <expected>50</expected>
+          <successResult>true</successResult>
+          <explanation>[p2] field [priceDiscount] was [50].</explanation>
           <operator>==</operator>
           <nature>1</nature>
         </expect-field>
@@ -138,14 +149,17 @@
         <expect-field>
           <fieldName>price</fieldName>
           <expected>240</expected>
+          <successResult>true</successResult>
+          <explanation>[pM] field [price] was [240].</explanation>
           <operator>==</operator>
-          <nature>0</nature>
+          <nature>1</nature>
         </expect-field>
       </fieldValues>
       <name>pM</name>
       <anonymous>false</anonymous>
     </expect-fact>
   </fixtures>
+  <lastRunResult>2015-04-16 19:54:12.458 UTC</lastRunResult>
   <rules/>
   <inclusive>false</inclusive>
   <packageName>org.acme.insurance.policyquote</packageName>
