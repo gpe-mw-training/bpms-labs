@@ -4,6 +4,14 @@ import java.lang.Number;
 
 rule "NoviceDriverSurcharge"
 	dialect "mvel"
+	no-loop true
+	lock-on-active true
 	when
+		There is a Driver
+		- age less than 20 years old
+		There is a Policy
+		- price is greater than 0
+		- policy type is 'AUTO'
 	then
+		Add surcharge 100 to Policy
 end
