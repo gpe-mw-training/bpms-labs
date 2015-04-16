@@ -1,2 +1,23 @@
 package org.acme.insurance.policyquote;
 
+import org.acme.insurance.Driver;
+import org.acme.insurance.Policy;
+
+rule "PriceMultipleVehicles"
+
+    salience -10
+
+    when
+        adriver: Driver()
+        pMaster: Policy(driver==adriver,policyType=="MASTER",price==null)
+        totalPrice: Number( intValue > 0 )
+            from accumulate( Policy(driver==adriver,policyType=="AUTO", priceVal:price),
+            init (int total = 0;),
+            action( total += priceVal;),
+            reverse( total -= priceVal;),
+            result(total))
+    then
+        System.out.println("PriceMultipleVehicles:  setting pMaster price to: "+  totalPrice.intValue());
+        modify(pMaster) {setPrice(totalPrice.intValue())}
+end
+
