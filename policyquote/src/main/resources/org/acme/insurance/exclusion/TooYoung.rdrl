@@ -10,6 +10,6 @@ rule "TooYoung"
 		Driver( age < 18 )
 	then
 		Rejection fact0 = new Rejection();
-		fact0.setReason( "" );
+		fact0.setReason( "Too Young" );
 		insert( fact0 );
 end
