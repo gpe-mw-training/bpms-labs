@@ -1,0 +1,12 @@
+<scenario>
+  <name>TooYoungTest</name>
+  <maxRuleFirings>100000</maxRuleFirings>
+  <globals/>
+  <fixtures/>
+  <rules/>
+  <inclusive>false</inclusive>
+  <packageName>org.acme.insurance.policyquote</packageName>
+  <imports>
+    <imports/>
+  </imports>
+</scenario>
