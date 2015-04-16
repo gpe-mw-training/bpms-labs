@@ -158,6 +158,18 @@
       <name>pM</name>
       <anonymous>false</anonymous>
     </expect-fact>
+    <expect-rule>
+      <ruleName>Row 4 CreditScoreDiscount</ruleName>
+      <expectedCount>2</expectedCount>
+    </expect-rule>
+    <expect-rule>
+      <ruleName>SafeAdults</ruleName>
+      <expectedCount>2</expectedCount>
+    </expect-rule>
+    <expect-rule>
+      <ruleName>PriceMultipleVehicles</ruleName>
+      <expectedFire>true</expectedFire>
+    </expect-rule>
   </fixtures>
   <lastRunResult>2015-04-16 19:54:12.458 UTC</lastRunResult>
   <rules/>
