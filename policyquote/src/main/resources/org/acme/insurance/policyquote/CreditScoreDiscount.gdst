@@ -44,7 +44,6 @@
           <fieldType>Integer</fieldType>
           <operator>&gt;</operator>
           <parameters/>
-          <binding></binding>
         </condition-column52>
         <condition-column52>
           <typedDefaultValue>
@@ -60,7 +59,6 @@
           <fieldType>Integer</fieldType>
           <operator>&lt;=</operator>
           <parameters/>
-          <binding></binding>
         </condition-column52>
       </conditions>
       <window>
@@ -86,7 +84,7 @@
           <constraintValueType>1</constraintValueType>
           <factField>price</factField>
           <fieldType>Integer</fieldType>
-          <operator>&gt;=</operator>
+          <operator>&gt;</operator>
           <parameters/>
         </condition-column52>
         <condition-column52>
@@ -106,7 +104,6 @@
         </condition-column52>
       </conditions>
       <window>
-        <operator></operator>
         <parameters/>
       </window>
     </Pattern52>
