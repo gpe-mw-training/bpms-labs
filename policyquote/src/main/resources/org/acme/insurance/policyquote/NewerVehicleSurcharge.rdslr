@@ -8,6 +8,7 @@ rule "NewerVehicleSurcharge"
 	dialect "mvel"
 	no-loop true
 	lock-on-active true
+	ruleflow-group "surcharge"
 	when
 		There is a Policy
 		- vehicle year is greater than 2004
