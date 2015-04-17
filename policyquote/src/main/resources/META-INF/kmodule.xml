@@ -1,7 +1,1 @@
-<kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
- 
-    <kbase name="insuranceKB" packages="org.acme.insurance.monitoring" eventProcessingMode="stream">
-	  <ksession name="insuranceKS" clockType="pseudo" default="true" />
-	  <!-- ksession name="insuranceKS" clockType="realtime" default="true" / -->
-    </kbase>
-</kmodule>
+<kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
