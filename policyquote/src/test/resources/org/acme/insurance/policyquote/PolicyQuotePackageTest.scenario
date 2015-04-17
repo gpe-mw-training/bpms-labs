@@ -1,12 +1,21 @@
 <scenario>
-  <name>PolicyQuotePackageTest</name>
+  <name>PolicyQuotePackageTest.scenario</name>
   <maxRuleFirings>100000</maxRuleFirings>
   <globals/>
-  <fixtures/>
+  <fixtures>
+    <execution-trace/>
+  </fixtures>
   <rules/>
   <inclusive>false</inclusive>
   <packageName>org.acme.insurance.policyquote</packageName>
   <imports>
-    <imports/>
+    <imports>
+      <org.drools.workbench.models.datamodel.imports.Import>
+        <type>org.acme.insurance.Driver</type>
+      </org.drools.workbench.models.datamodel.imports.Import>
+      <org.drools.workbench.models.datamodel.imports.Import>
+        <type>org.acme.insurance.Policy</type>
+      </org.drools.workbench.models.datamodel.imports.Import>
+    </imports>
   </imports>
 </scenario>
