@@ -20,8 +20,8 @@ import org.kie.api.runtime.rule.EntryPoint;
 import org.kie.api.runtime.rule.FactHandle;
 
 /**
- * BLD Workshop Sample JUnit Test Class for Complex Event Processing Rules Using
- * the pseudo clock to simulate the passing of time.
+ * Sample JUnit Test Class for Complex Event Processing Rules
+ * Uses the pseudo clock to simulate the passing of time.
  */
 
 public class PolicyBindingRulesTest {
@@ -91,7 +91,7 @@ public class PolicyBindingRulesTest {
 
         // ------------------------------------------- LAB HINT:
         // to use a separate stream for inserts
-        // EntryPoint pbStream = ksession.getEntryPoint( "policy_binding_stream" );
+        EntryPoint pbStream = ksession.getEntryPoint( "policy_binding_stream" );
         
         // Advance clock by either minutes or seconds as per business requirements described in lab instructions
         TimeUnit timeUnit = TimeUnit.MINUTES;
