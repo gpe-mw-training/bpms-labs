@@ -4,14 +4,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.assertEquals;
-
 import org.acme.insurance.PolicyBinding;
 import org.drools.core.time.SessionPseudoClock;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.kie.api.KieBase;
 import org.kie.api.KieServices;
 import org.kie.api.logger.KieRuntimeLogger;
 import org.kie.api.runtime.KieContainer;
@@ -21,12 +18,20 @@ import org.kie.api.runtime.rule.FactHandle;
 
 /**
  * Sample JUnit Test Class for Complex Event Processing Rules
- * Uses the pseudo clock to simulate the passing of time.
  */
 
 public class PolicyBindingRulesTest {
 
-    static KieBase kbase;
+	private static final String TARGET_SIZE = "targetSize";
+	private static final String TARGET_POLICY_AVERAGE = "targetPolicyAverage";
+	private static final String WITHIN_THRESHOLD = "withinThreshold";
+	
+	private static final int targetSize = 5;
+	private static final int targetPolicyAverage = 200;
+	
+	private static final int testCaseSize = 10;
+	private static final int timeAdvancementInterval = 2;
+	
     static KieSession ksession;
     static KieRuntimeLogger klogger;
     static SessionPseudoClock clock;
@@ -34,35 +39,29 @@ public class PolicyBindingRulesTest {
     @BeforeClass
     public static void setupKsession() {
         try {
-            // load up the knowledge base
-            ksession = readKnowledgeBase();
+        	KieServices ks = KieServices.Factory.get();
+            KieContainer kContainer = ks.getKieClasspathContainer();
+            ksession = kContainer.newKieSession();
+
+            // initiate fireUntilHalt on CEP engine in a separate thread because this method blocks
+            new Thread() {
+                @Override
+                public void run() {
+                    ksession.fireUntilHalt();
+                }
+            }.start();
+            
             clock = ksession.getSessionClock();
             klogger = KieServices.Factory.get().getLoggers().newFileLogger(ksession, "src/test/java/org/acme/insurance/monitoring/policyBindingRulesTest");
 
+            // Set globals
+            ksession.setGlobal(TARGET_SIZE, targetSize);
+            ksession.setGlobal(TARGET_POLICY_AVERAGE, targetPolicyAverage);
         } catch (Throwable t) {
             t.printStackTrace();
         }
     }
 
-    private static KieSession readKnowledgeBase() throws Exception {
-        
-        KieServices ks = KieServices.Factory.get();
-        
-        KieContainer kContainer = ks.getKieClasspathContainer();
-        final KieSession kSession = kContainer.newKieSession();
-
-        // initiate fireUntilHalt on CEP engine in a separate thread because this method blocks
-        new Thread() {
-            @Override
-            public void run() {
-                kSession.fireUntilHalt();
-            }
-        }.start();
-
-        
-        return kSession;
-    }
-    
     @AfterClass
     public static void closeKsession() {
         try {
@@ -77,128 +76,47 @@ public class PolicyBindingRulesTest {
         }
     }
 
+    /* 
+     * Insert into working memeory configurable # of PolicyBinding objects whose price increments by 50.
+     * Once done, halt the engine and print whether the target average price threshold has been exceeded or not
+     */
     @Test
-    public void exceedThresholdTest() throws Exception {
-
-        // Create policy binding list
-        ArrayList<PolicyBinding> policyBindingList = new ArrayList<PolicyBinding>();
-        int pbvalue = 500;
-
-        while (policyBindingList.size() < 12) {
-            policyBindingList.add(new PolicyBinding(pbvalue, new Date()));
-            pbvalue += 50;
-        }
-
-        // ------------------------------------------- LAB HINT:
-        // to use a separate stream for inserts
-        EntryPoint pbStream = ksession.getEntryPoint( "policy_binding_stream" );
+    public void thresholdTest() throws Exception {
+   
+        // dedicated stream for inserts
+        EntryPoint stStream = ksession.getEntryPoint( "sales_team_stream" );
         
         // Advance clock by either minutes or seconds as per business requirements described in lab instructions
-        TimeUnit timeUnit = TimeUnit.MINUTES;
-        //TimeUnit timeUnit = TimeUnit.SECONDS;
+        TimeUnit timeUnit = TimeUnit.MINUTES;   //Scenario1
+        //TimeUnit timeUnit = TimeUnit.SECONDS; //Scenario2
         System.out.println("exceedThresholdTest() Will advance kieSession clock in the following time increments: "+timeUnit);
 
-        // Set a String global from which to pass a status message if rule fires
-        StringBuilder sBuilder = new StringBuilder();
-        ksession.setGlobal("policyAverage", sBuilder);
-
-
-        // /create fact handle list
-        // insert objects into working memory while advancing the clock
+        // create fact handle list (useful if need references to inserted facts)
         ArrayList<FactHandle> factHandleList = new ArrayList<FactHandle>();
-        for (int i = 0; i < policyBindingList.size(); i++) {
-            factHandleList.add(ksession.insert(policyBindingList.get(i)));
-            //factHandleList.add(pbStream.insert(policyBindingList.get(i)));
+        int pbvalue = 0;
+        while(factHandleList.size() < testCaseSize){
+        	PolicyBinding pBinding = new PolicyBinding(pbvalue, new Date());
+        	
+        	// insert objects into working memory 
+            factHandleList.add(ksession.insert(pBinding));
+            //factHandleList.add(stStream.insert(pBinding));
             
-            clock.advanceTime(2, timeUnit);
-            //Thread.sleep(2000); 
-        }        
-
-        clock.advanceTime(7, timeUnit);
-
-
-        Thread.sleep(3000);  
+            // advance the clock
+            clock.advanceTime(timeAdvancementInterval, timeUnit);
+            
+            // increment the price field of each new PolicyBinding
+            pbvalue +=50;
+            
+            // Give the CEP engine a bit of time to process
+            // otherwise, ksession.halt() will be invoked before anything meaningful has happened
+            Thread.sleep(500);
+        } 
         ksession.halt();
 
-        // remove facts
-        for (int i = 0; i < factHandleList.size(); i++) {
-        	
-            //ksession.delete(factHandleList.get(i));
-            pbStream.delete(factHandleList.get(i));
-            
-        }
-
-        if(!sBuilder.toString().isEmpty()){
-            String result = sBuilder.substring(0, 45);
-            System.out.println("exceedThresholdTest Result: " + sBuilder.toString());
-            assertEquals("Average Price is over 710", "Increase Reserves.  Average Price is over 710", result);
-        } else {
-            System.out.println("exceedThresholdTest() appears that no rules fired");
-        }
-    }
-
-    @Test
-    public void withinThresholdTest() throws Exception{
-
-        // call fireUntilHalt once again (since halt() was called in previous test )
-        new Thread() {
-            @Override
-            public void run() {
-                ksession.fireUntilHalt();
-            }
-        }.start();
-
-
-        // Create policy binding list
-        ArrayList<PolicyBinding> policyBindingList = new ArrayList<PolicyBinding>();
-        int pbvalue = 500;
-        while (policyBindingList.size() < 12) {
-            policyBindingList.add(new PolicyBinding(pbvalue, new Date()));
-            pbvalue += 10;
-        }
-
-        // ------------------------------------------- LAB HINT:
-        // to use a separate stream for inserts
-        // EntryPoint pbStream = ksession.getEntryPoint( "policy_binding_stream" );
-        
-        // Advance clock by either minutes or seconds as per business requirements discussed in lab instructions
-        TimeUnit timeUnit = TimeUnit.MINUTES;
-        //TimeUnit timeUnit = TimeUnit.SECONDS;
-        System.out.println("withinThresholdTest() Will advance kieSession clock in the following time increments: "+timeUnit);
-
-        // Set a String global from which to pass a status message if rule fires
-        StringBuilder sBuilder = new StringBuilder();
-        ksession.setGlobal("policyAverage", sBuilder);
-
-        // /create fact handle list
-        // insert objects into working memory while advancing the clock
-        ArrayList<FactHandle> factHandleList = new ArrayList<FactHandle>();
-        for (int i = 0; i < policyBindingList.size(); i++) {
-            factHandleList.add(ksession.insert(policyBindingList.get(i)));
-            //factHandleList.add(pbStream.insert(policyBindingList.get(i)));
-            
-            clock.advanceTime(2, timeUnit);
-            //Thread.sleep();
-        }
-        
-        clock.advanceTime(7, timeUnit);
-
-        Thread.sleep(3000);
-        ksession.halt();
-
-        // remove facts
-        for (int i = 0; i < factHandleList.size(); i++) {
-        	
-            ksession.delete(factHandleList.get(i));
-            //pbStream.delete(factHandleList.get(i));
-        }
-
-        if(!sBuilder.toString().isEmpty()){
-            String result = sBuilder.substring(0, 34);
-            System.out.println("withinThresholdTest Result: " + sBuilder.toString());
-            assertEquals("Average Price is under 710", "Average Price under the threashold", result);
-        }else {
-            System.out.println("withinThresholdTest() appears that no rules fired");
-        }
+        Boolean withinThreshold = (Boolean)ksession.getGlobal(WITHIN_THRESHOLD);
+        if(withinThreshold)
+        	System.out.println("thresholdTest() Good news!  PolicyBinding price average did not exceed: "+targetPolicyAverage);
+        else
+        	System.out.println("thresholdTest() Oh-no!  PolicyBinding price average exceeded: "+targetPolicyAverage);
     }
 }
