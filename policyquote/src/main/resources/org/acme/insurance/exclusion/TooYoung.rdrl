@@ -6,6 +6,7 @@ import org.acme.insurance.Rejection;
 
 rule "TooYoung"
 	dialect "mvel"
+	ruleflow-group "rejection"
 	when
 		Driver( age < 18 )
 	then
