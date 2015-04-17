@@ -22,16 +22,16 @@ import org.kie.api.runtime.rule.FactHandle;
 
 public class PolicyBindingRulesTest {
 
-	private static final String TARGET_SIZE = "targetSize";
-	private static final String TARGET_POLICY_AVERAGE = "targetPolicyAverage";
-	private static final String WITHIN_THRESHOLD = "withinThreshold";
-	
-	private static final int targetSize = 5;
-	private static final int targetPolicyAverage = 200;
-	
-	private static final int testCaseSize = 10;
-	private static final int timeAdvancementInterval = 2;
-	
+    private static final String TARGET_SIZE = "targetSize";
+    private static final String TARGET_POLICY_AVERAGE = "targetPolicyAverage";
+    private static final String WITHIN_THRESHOLD = "withinThreshold";
+    
+    private static final int targetSize = 5;
+    private static final int targetPolicyAverage = 200;
+    
+    private static final int testCaseSize = 10;
+    private static final int timeAdvancementInterval = 2;
+    
     static KieSession ksession;
     static KieRuntimeLogger klogger;
     static SessionPseudoClock clock;
@@ -39,7 +39,7 @@ public class PolicyBindingRulesTest {
     @BeforeClass
     public static void setupKsession() {
         try {
-        	KieServices ks = KieServices.Factory.get();
+            KieServices ks = KieServices.Factory.get();
             KieContainer kContainer = ks.getKieClasspathContainer();
             ksession = kContainer.newKieSession();
 
@@ -95,9 +95,9 @@ public class PolicyBindingRulesTest {
         ArrayList<FactHandle> factHandleList = new ArrayList<FactHandle>();
         int pbvalue = 0;
         while(factHandleList.size() < testCaseSize){
-        	PolicyBinding pBinding = new PolicyBinding(pbvalue, new Date());
-        	
-        	// insert objects into working memory 
+            PolicyBinding pBinding = new PolicyBinding(pbvalue, new Date());
+            
+            // insert objects into working memory 
             //factHandleList.add(ksession.insert(pBinding));
             factHandleList.add(stStream.insert(pBinding));
             
@@ -115,8 +115,8 @@ public class PolicyBindingRulesTest {
 
         Boolean withinThreshold = (Boolean)ksession.getGlobal(WITHIN_THRESHOLD);
         if(withinThreshold)
-        	System.out.println("thresholdTest() Good news!  PolicyBinding price average did not exceed: "+targetPolicyAverage);
+            System.out.println("thresholdTest() Good news!  PolicyBinding price average did not exceed: "+targetPolicyAverage);
         else
-        	System.out.println("thresholdTest() Oh-no!  PolicyBinding price average exceeded: "+targetPolicyAverage);
+            System.out.println("thresholdTest() Oh-no!  PolicyBinding price average exceeded: "+targetPolicyAverage);
     }
 }
