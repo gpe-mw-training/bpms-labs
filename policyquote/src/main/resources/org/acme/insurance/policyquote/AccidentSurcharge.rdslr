@@ -8,6 +8,7 @@ rule "AccidentSurcharge"
 	dialect "mvel"
 	no-loop true
 	lock-on-active true
+	ruleflow-group "surcharge"
 	when
 		There is a Driver
 		- has had more than 2 number of accidents
