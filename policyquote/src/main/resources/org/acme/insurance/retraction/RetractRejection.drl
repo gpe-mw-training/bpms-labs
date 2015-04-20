@@ -3,6 +3,7 @@ package org.acme.insurance.retraction;
 import org.acme.insurance.Rejection;
 
 rule RetractRejection
+    ruleflow-group "retract"
     when
         rejection: Rejection()
     then
