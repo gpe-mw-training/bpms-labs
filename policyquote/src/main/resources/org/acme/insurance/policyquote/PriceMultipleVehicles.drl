@@ -6,6 +6,7 @@ import org.acme.insurance.Policy;
 rule "PriceMultipleVehicles"
 
     salience -10
+    ruleflow-group "calculation"
 
     when
         adriver: Driver()
