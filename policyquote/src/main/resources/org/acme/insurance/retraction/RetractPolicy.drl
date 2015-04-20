@@ -1,2 +1,11 @@
 package org.acme.insurance.retraction;
 
+import org.acme.insurance.Policy;
+
+rule RetractPolicy
+    when
+        policy: Policy()
+    then
+        System.out.println("Retracting Policy " + policy.getPrice());
+        retract(policy);
+end
