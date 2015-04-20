@@ -3,6 +3,7 @@ package org.acme.insurance.retraction;
 import org.acme.insurance.Policy;
 
 rule RetractPolicy
+   ruleflow-group "retract"
     when
         policy: Policy()
     then
