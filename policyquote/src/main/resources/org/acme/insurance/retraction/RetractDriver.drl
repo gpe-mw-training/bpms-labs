@@ -1,8 +1,11 @@
 package org.acme.insurance.retraction;
 
-import org.acme.insurance.Driver( )
+import org.acme.insurance.Driver;
 
 rule RetractDriver
     when
+        driver: Driver()
     then
+        System.out.println("Retracting Driver " + driver.getDriverName() + " - " + driver.getAge());
+        retract(driver);
 end
