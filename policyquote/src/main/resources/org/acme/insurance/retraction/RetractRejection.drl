@@ -1,2 +1,11 @@
 package org.acme.insurance.retraction;
 
+import org.acme.insurance.Rejection;
+
+rule RetractRejection
+    when
+        rejection: Rejection()
+    then
+        System.out.println("Retracting rejection " + rejection);
+        retract(rejection);
+end
