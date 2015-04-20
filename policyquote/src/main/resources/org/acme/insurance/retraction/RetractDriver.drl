@@ -3,6 +3,7 @@ package org.acme.insurance.retraction;
 import org.acme.insurance.Driver;
 
 rule RetractDriver
+  ruleflow-group "retract"
     when
         driver: Driver()
     then
