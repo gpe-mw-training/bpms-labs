@@ -5,66 +5,67 @@
 <property name="status" value="0"/>
 <field position="0" name="driver_age" type="InputTextInteger" id="315956256">
 <property name="fieldRequired" value="false"/>
-<property name="label" value="quot;enquot;,quot;age (driver)quot;"/>
+<property name="label" value="quot;SSClassquot;,quot;quot;quot;SSStylequot;,quot;quot;quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;Agequot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
+<property name="errorMessage" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
+<property name="title" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
 <property name="readonly" value="false"/>
 <property name="inputBinding" value="driverin/age"/>
 <property name="fieldClass" value="java.lang.Integer"/>
 </field>
-<field position="1" name="driver_dlNumber" type="InputText" id="188597933">
+<field position="1" name="driver_driverName" type="InputText" id="881229642">
 <property name="fieldRequired" value="false"/>
-<property name="label" value="quot;enquot;,quot;dlNumber (driver)quot;"/>
+<property name="label" value="quot;SSClassquot;,quot;quot;quot;SSStylequot;,quot;quot;quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;Namequot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
+<property name="errorMessage" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
+<property name="title" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
 <property name="readonly" value="false"/>
-<property name="inputBinding" value="driverin/dlNumber"/>
-<property name="fieldClass" value="java.lang.String"/>
-</field>
-<field position="2" name="driver_driverName" type="InputText" id="881229642">
-<property name="fieldRequired" value="false"/>
-<property name="label" value="quot;enquot;,quot;driverName (driver)quot;"/>
-<property name="readonly" value="false"/>
+<property name="isHTML" value="false"/>
+<property name="hideContent" value="false"/>
 <property name="inputBinding" value="driverin/driverName"/>
 <property name="fieldClass" value="java.lang.String"/>
 </field>
-<field position="3" name="driver_numberOfAccidents" type="InputTextInteger" id="109149400">
+<field position="2" name="driver_numberOfAccidents" type="InputTextInteger" id="109149400">
 <property name="fieldRequired" value="false"/>
-<property name="label" value="quot;enquot;,quot;numberOfAccidents (driver)quot;"/>
+<property name="label" value="quot;SSClassquot;,quot;quot;quot;SSStylequot;,quot;quot;quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;Number of Accidentsquot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
+<property name="errorMessage" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
+<property name="title" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
 <property name="readonly" value="false"/>
 <property name="inputBinding" value="driverin/numberOfAccidents"/>
 <property name="fieldClass" value="java.lang.Integer"/>
 </field>
-<field position="4" name="driver_numberOfTickets" type="InputTextInteger" id="1778163801">
+<field position="3" name="driver_numberOfTickets" type="InputTextInteger" id="1778163801">
 <property name="fieldRequired" value="false"/>
-<property name="label" value="quot;enquot;,quot;numberOfTickets (driver)quot;"/>
+<property name="label" value="quot;SSClassquot;,quot;quot;quot;SSStylequot;,quot;quot;quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;Number of Ticketsquot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
+<property name="errorMessage" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
+<property name="title" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
 <property name="readonly" value="false"/>
 <property name="inputBinding" value="driverin/numberOfTickets"/>
 <property name="fieldClass" value="java.lang.Integer"/>
 </field>
-<field position="5" name="policy_policyType" type="InputText" id="1692829264">
+<field position="4" name="policy_price" type="InputTextInteger" id="1489976213">
 <property name="fieldRequired" value="false"/>
-<property name="label" value="quot;enquot;,quot;policyType (policy)quot;"/>
-<property name="readonly" value="false"/>
-<property name="inputBinding" value="policyin/policyType"/>
-<property name="outputBinding" value="policyOut/policyType"/>
-<property name="fieldClass" value="java.lang.String"/>
-</field>
-<field position="6" name="policy_price" type="InputTextInteger" id="1489976213">
-<property name="fieldRequired" value="false"/>
-<property name="label" value="quot;enquot;,quot;price (policy)quot;"/>
+<property name="label" value="quot;SSClassquot;,quot;quot;quot;SSStylequot;,quot;quot;quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;Pricequot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
+<property name="errorMessage" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
+<property name="title" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
 <property name="readonly" value="false"/>
 <property name="inputBinding" value="policyin/price"/>
 <property name="outputBinding" value="policyOut/price"/>
 <property name="fieldClass" value="java.lang.Integer"/>
 </field>
-<field position="7" name="policy_vehicleYear" type="InputTextInteger" id="244499562">
+<field position="5" name="policy_vehicleYear" type="InputTextInteger" id="244499562">
 <property name="fieldRequired" value="false"/>
-<property name="label" value="quot;enquot;,quot;vehicleYear (policy)quot;"/>
+<property name="label" value="quot;SSClassquot;,quot;quot;quot;SSStylequot;,quot;quot;quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;Vehicle Yearquot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
+<property name="errorMessage" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
+<property name="title" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
 <property name="readonly" value="false"/>
 <property name="inputBinding" value="policyin/vehicleYear"/>
 <property name="outputBinding" value="policyOut/vehicleYear"/>
 <property name="fieldClass" value="java.lang.Integer"/>
 </field>
-<field position="8" name="price" type="InputTextInteger" id="981625644">
+<field position="6" name="price" type="InputTextInteger" id="981625644">
 <property name="fieldRequired" value="false"/>
-<property name="label" value="quot;enquot;,quot;taskPriceIn (price)quot;"/>
+<property name="label" value="quot;SSClassquot;,quot;quot;quot;SSStylequot;,quot;quot;quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;New Pricequot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
+<property name="errorMessage" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
+<property name="title" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
 <property name="readonly" value="false"/>
 <property name="inputBinding" value="taskPriceIn"/>
 <property name="outputBinding" value="taskPriceOut"/>
