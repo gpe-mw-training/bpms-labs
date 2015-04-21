@@ -1,0 +1,15 @@
+<ns2:Policy xmlns:ns2="urn:com.redhat.gpe.auditReview:1.0">
+  <driver>
+    <age>22</age>
+    <creditScore>600</creditScore>
+    <dlNumber>xxxx</dlNumber>
+    <driverName>alex</driverName>
+    <numberOfAccidents>0</numberOfAccidents>
+    <numberOfTickets>1</numberOfTickets>
+    <ssn>111223333</ssn>
+  </driver>
+  <policyType>AUTO</policyType>
+  <price>500</price>
+  <vehicleYear>2014</vehicleYear>
+</ns2:Policy>
+
