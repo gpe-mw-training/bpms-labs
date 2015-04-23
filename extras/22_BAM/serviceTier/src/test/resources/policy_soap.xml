@@ -1,0 +1,23 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:com.redhat.gpe.auditReview:1.0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <urn:savePolicy>
+         <arg0>
+            <driver>
+               <age>22</age>
+               <creditScore>123</creditScore>
+               <dlNumber>12345</dlNumber>
+               <driverName>Samuel</driverName>
+               <numberOfAccidents>0</numberOfAccidents>
+               <numberOfTickets>1</numberOfTickets>
+               <ssn>123123</ssn>
+            </driver>
+            <policyType>AUTO</policyType>
+            <price>550</price>
+            <priceDiscount>0</priceDiscount>
+            <vehicleYear>2009</vehicleYear>
+            <processInstanceId>1</processInstanceId>
+         </arg0>
+      </urn:savePolicy>
+   </soapenv:Body>
+</soapenv:Envelope>
