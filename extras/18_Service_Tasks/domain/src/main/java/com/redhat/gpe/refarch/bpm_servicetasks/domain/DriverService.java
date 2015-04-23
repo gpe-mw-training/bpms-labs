@@ -1,10 +1,14 @@
 
 package com.redhat.gpe.refarch.bpm_servicetasks.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
-
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * <p>Java class for driver complex type.
@@ -41,30 +45,20 @@ import javax.xml.bind.annotation.XmlType;
     "numberOfTickets",
     "ssn"
 })
-@javax.xml.bind.annotation.XmlRootElement(name = "driverService")
+@Entity
 public class DriverService implements java.io.Serializable {
 
-    public static final long serialVersionUID = 42L;
-
-    @javax.xml.bind.annotation.XmlElement
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@XmlTransient
+	protected Long id;
+	
     protected Integer age;
-
-    @javax.xml.bind.annotation.XmlElement
     protected Integer creditScore;
-
-    @javax.xml.bind.annotation.XmlElement
     protected String dlNumber;
-
-    @javax.xml.bind.annotation.XmlElement
     protected String driverName;
-
-    @javax.xml.bind.annotation.XmlElement
     protected Integer numberOfAccidents;
-
-    @javax.xml.bind.annotation.XmlElement
     protected Integer numberOfTickets;
-
-    @javax.xml.bind.annotation.XmlElement
     protected Integer ssn;
 
     public DriverService () {}

@@ -1,10 +1,16 @@
 
 package com.redhat.gpe.refarch.bpm_servicetasks.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlTransient;
 
 
 /**
@@ -22,6 +28,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="price" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="priceDiscount" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="vehicleYear" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="processInstanceId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,27 +43,25 @@ import javax.xml.bind.annotation.XmlType;
     "policyType",
     "price",
     "priceDiscount",
-    "vehicleYear"
+    "vehicleYear",
+    "processInstanceId"
 })
 @XmlRootElement(name="Policy")
+@Entity
 public class PolicyService implements java.io.Serializable {
 
-    public static final long serialVersionUID = 43L;
-
-    @javax.xml.bind.annotation.XmlElement
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@XmlTransient
+	protected Long id;
+	
+	@ManyToOne
     protected DriverService driver;
-
-    @javax.xml.bind.annotation.XmlElement
     protected String policyType;
-
-    @javax.xml.bind.annotation.XmlElement
     protected Integer price = 0;
-
-    @javax.xml.bind.annotation.XmlElement
     protected Integer priceDiscount = 0;
-
-    @javax.xml.bind.annotation.XmlElement
     protected Integer vehicleYear = 0;
+    protected Long processInstanceId;
 
     public PolicyService() {}
 
@@ -180,11 +185,20 @@ public class PolicyService implements java.io.Serializable {
         this.vehicleYear = value;
     }
 
-    public String toString() {
+    public Long getProcessInstanceId() {
+		return processInstanceId;
+	}
+
+	public void setProcessInstanceId(Long processInstanceId) {
+		this.processInstanceId = processInstanceId;
+	}
+
+	public String toString() {
         StringBuilder sBuilder = new StringBuilder();
         sBuilder.append("\n\tpolicyType : " +policyType);
         sBuilder.append("\n\tprice : " +price);
         sBuilder.append("\n\tpriceDiscount : " +priceDiscount);
+        sBuilder.append("\n\tprocessInstanceId : "+processInstanceId);
         sBuilder.append("\n\tvehicle year : "+vehicleYear);
         sBuilder.append("\n\tdriver : " +driver);
         return sBuilder.toString();
