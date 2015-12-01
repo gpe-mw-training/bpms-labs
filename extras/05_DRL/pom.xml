@@ -8,21 +8,9 @@
   <name>policyquote</name>
 
   <properties>
-      <drools-version>6.2.0.Final-redhat-4</drools-version>
+      <drools-version>6.3.0.Final-redhat-4</drools-version>
       <junit-version>4.11</junit-version>
   </properties>
-
-  <!--dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>org.drools</groupId>
-            <artifactId>drools-bom</artifactId>
-            <type>pom</type>
-            <version>${drools-version}</version>
-            <scope>import</scope>
-        </dependency>
-    </dependencies>
-  </dependencyManagement-->
 
   <dependencies>
     <dependency>
