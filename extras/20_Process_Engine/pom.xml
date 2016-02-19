@@ -31,10 +31,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
     <includePolicyPayload>TRUE</includePolicyPayload>
     <!-- *********************************************** -->
 
-    <!--NOTE:  compiling issues with this supported version of drools
-         drools-version>6.2.0.Final-redhat-4</drools-version 
-    -->
-    <drools-version>6.2.0.Final</drools-version>
+    <drools-version>6.3.0.Final-redhat-5</drools-version>
     <slf4j-version>1.7.12</slf4j-version>
     <junit-version>4.11</junit-version>
   </properties>

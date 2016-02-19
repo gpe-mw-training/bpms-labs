@@ -8,7 +8,7 @@
   <name>policyquote</name>
 
   <properties>
-      <drools-version>6.3.0.Final-redhat-4</drools-version>
+      <drools-version>6.3.0.Final-redhat-5</drools-version>
       <junit-version>4.11</junit-version>
   </properties>
 
