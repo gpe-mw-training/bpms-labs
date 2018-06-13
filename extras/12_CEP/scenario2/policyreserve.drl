@@ -1,0 +1,60 @@
+//created on: Aug 14, 2012
+package org.acme.insurance.monitoring
+
+import org.acme.insurance.PolicyBinding;
+import java.util.ArrayList;
+
+global java.lang.Integer targetSize
+global java.lang.Integer targetPolicyAverage
+global java.lang.Boolean withinThreshold
+
+// declaration to change the Fact into an Event
+declare PolicyBinding
+  @role(event)
+end
+
+/* If :
+     1) received more than targetSize # of PolicyBinding events within targetDuration
+     2) average of PolicyBinding events is greater than targetPolicyAverage
+   Then:
+     1) stop evaluating
+     2) indicate withinThreshold == FALSE
+*/
+rule "exceedThreshold"
+
+    when
+        not Boolean()
+        blist: ArrayList(size > targetSize.intValue()) 
+            from collect(PolicyBinding() over window:time(30m) from entry-point sales_team_stream);
+            
+        average: Number(intValue > targetPolicyAverage.intValue()) from accumulate (
+                PolicyBinding(p: price) from blist,
+                average(p)
+             )
+    then
+        insert(new Boolean(Boolean.TRUE));
+        System.out.println("fired rule " + kcontext.getRule().getName() +" : policyAverage = "+average+" : # Policies = "+blist.size());
+        kcontext.getKnowledgeRuntime().setGlobal("withinThreshold", Boolean.FALSE);
+end
+
+
+/* If:
+       1) average of PolicyBinding events is less than targetPolicyAverage
+   Then:
+       2) indicate withinThreshold == TRUE
+       
+   Note:  expect this rule to fire with insertion of every PolicyBinding until price average exceeds targetPolicyAverage
+*/
+rule "withinThreshold"
+    when
+        blist: ArrayList() 
+            from collect(PolicyBinding() over window:time(30m) from entry-point sales_team_stream);
+            
+        average: Number(intValue <= targetPolicyAverage.intValue()) from accumulate (
+                PolicyBinding(p: price) from blist,
+                average(p)
+             )
+    then
+        System.out.println("fired rule " + kcontext.getRule().getName() +" : policyAverage = "+average+" : # Policies = "+blist.size());
+        kcontext.getKnowledgeRuntime().setGlobal("withinThreshold", Boolean.TRUE);
+end
